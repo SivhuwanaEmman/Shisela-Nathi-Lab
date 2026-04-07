@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welders Lab</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+</head>
+<body>
+
+<div class="overlay"></div>
+
+<div class="container">
+
+    <!-- LEFT: PROJECT INPUT -->
+    <div class="left">
+        <h2>Shisela Nathi Lab</h2>
+
+        <textarea id="description" placeholder="Describe your project (e.g. bedroom window frame, gate)..."></textarea>
+
+        <input id="length" type="number" placeholder="Length (m)">
+        <input id="width" type="number" placeholder="Width (m)">
+        <input id="quantity" type="number" placeholder="Quantity">
+
+        <select id="material">
+            <option>Steel</option>
+            <option>Aluminum</option>
+            <option>Stainless Steel</option>
+        </select>
+
+        <select id="shape">
+            <option>Flat Bar</option>
+            <option>Square Tube</option>
+            <option>Round Pipe</option>
+            <option>Angle Iron</option>
+        </select>
+
+        <input id="thickness" type="number" placeholder="Thickness (mm)">
+
+        <button onclick="generateFullPlan()">Generate Full Plan</button>
+    </div>
+
+    <!-- RIGHT: RESULTS -->
+    <div class="right">
+        <h2>Results</h2>
+
+        <div class="result">
+
+            <h4>⏱️ Estimated Time</h4>
+            <p id="time">--</p>
+
+            <h4>💰 Cost</h4>
+            <p id="materialNeeded">Material: --</p>
+            <p id="priceMeter">Price/m: R --</p>
+            <p id="totalCost">Total: R --</p>
+
+            <h4>🛠️ Steps</h4>
+            <ul id="steps"></ul>
+
+            <h4>⚠️ Safety</h4>
+            <ul id="safety"></ul>
+
+            <h4>🎨 Alternative Designs</h4>
+            <ul id="alternatives"></ul>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+async function generateFullPlan() {
+
+    // Collect inputs
+    const data = {
+        description: document.getElementById("description").value,
+        length: document.getElementById("length").value,
+        width: document.getElementById("width").value,
+        quantity: document.getElementById("quantity").value,
+        material: document.getElementById("material").value,
+        shape: document.getElementById("shape").value,
+        thickness: document.getElementById("thickness").value
+    };
+
+    try {
+        const response = await fetch("/generate", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        // 🔥 UPDATE UI WITH REAL DATA
+        document.getElementById("time").innerText = result.time;
+
+        document.getElementById("materialNeeded").innerText =
+            "Material: " + result.material_needed.toFixed(2) + " m";
+
+        document.getElementById("priceMeter").innerText =
+            "Price/m: R " + result.price_per_meter.toFixed(2);
+
+        document.getElementById("totalCost").innerText =
+            "Total: R " + result.total_cost.toFixed(2);
+
+        fillList("steps", result.steps);
+        fillList("safety", result.safety);
+        fillList("alternatives", result.alternatives);
+
+    } catch (error) {
+        console.error("ERROR:", error);
+        alert("Something went wrong. Check Flask server.");
+    }
+}
+
+function fillList(id, items) {
+    const ul = document.getElementById(id);
+    ul.innerHTML = "";
+
+    if (!items || items.length === 0) {
+        ul.innerHTML = "<li>No data</li>";
+        return;
+    }
+
+    items.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        ul.appendChild(li);
+    });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* BACKGROUND IMAGE (WELDING) */
+body {
+    height: 100vh;
+ background: url("/static/welding.jpeg") no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* MAIN CARD */
+.container {
+    width: 800px;
+    height: 450px;
+    display: flex;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+/* LEFT SIDE */
+.left {
+    width: 50%;
+    background: #f2f2f2;
+    padding: 40px;
+    text-align: center;
+}
+
+.left h2 {
+    margin-bottom: 30px;
+}
+
+.left input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    background: #e0e0e0;
+}
+
+.left .forgot {
+    font-size: 12px;
+    margin: 10px 0;
+    color: #555;
+}
+
+.left button {
+    margin-top: 10px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 20px;
+    background: #555;
+    color: white;
+    cursor: pointer;
+}
+
+/* RIGHT SIDE */
+.right {
+    width: 50%;
+    background: rgba(50, 60, 70, 0.9);
+    color: white;
+    padding: 40px;
+    text-align: center;
+}
+
+.right h2 {
+    margin-bottom: 20px;
+}
+
+.right input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 8px;
+    background: #dcdcdc;
+}
+
+.terms {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    margin: 10px 0;
+}
+
+.terms input {
+    margin-right: 5px;
+}
+
+.right button {
+    margin-top: 10px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 20px;
+    background: #aaa;
+    color: black;
+    cursor: pointer;
+}

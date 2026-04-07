@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In / Sign Up</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- LEFT: SIGN IN -->
+    <div class="left">
+        <h2>Sign In</h2>
+
+        <input type="email" placeholder="Email Address">
+        <input type="password" placeholder="Password">
+
+        <p class="forgot">Forgot Your Password?</p>
+
+        <button>Sign In</button>
+    </div>
+
+    <!-- RIGHT: SIGN UP -->
+    <div class="right">
+        <h2>Create Account</h2>
+
+        <input type="text" placeholder="Username">
+        <input type="email" placeholder="Email Address">
+        <input type="password" placeholder="Password">
+        <input type="password" placeholder="Confirm Password">
+
+        <div class="terms">
+            <input type="checkbox">
+            <span>I agree to the Terms & Conditions</span>
+        </div>
+
+        <button>Create Account</button>
+    </div>
+
+</div>
+
+</body>
+</html>

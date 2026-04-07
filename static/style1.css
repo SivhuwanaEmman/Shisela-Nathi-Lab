@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* BACKGROUND */
+body {
+    height: 100vh;
+    background: url("/static/welding1.jpeg") no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* OVERLAY */
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+}
+
+/* MAIN CONTAINER */
+.container {
+    position: relative;
+    z-index: 1;
+    width: 900px;              /* slightly bigger */
+    height: 550px;             /* more space */
+    display: flex;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+/* LEFT SIDE (PROJECT SETUP) */
+.left {
+    width: 50%;
+    padding: 20px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    color: white;
+    overflow-y: auto;
+}
+
+.left h2 {
+    margin-bottom: 10px;
+}
+
+/* RIGHT SIDE (RESULTS) */
+.right {
+    width: 50%;
+    padding: 20px;
+    background: rgba(50,60,70,0.95);
+    color: white;
+    overflow-y: auto;   /* ✅ IMPORTANT */
+}
+
+.right h2 {
+    margin-bottom: 10px;
+}
+
+/* INPUTS (ONLY LEFT SIDE) */
+.left input,
+.left select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 8px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+}
+
+/* TEXTAREA */
+textarea {
+    height: 80px;
+    resize: none;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 20px;
+    background: #ff6b00;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff8533;
+}
+
+/* RESULT BOX */
+.result {
+    margin-top: 10px;
+    padding: 15px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 10px;
+}
+
+/* SECTION HEADINGS */
+.result h4 {
+    margin-top: 12px;
+    margin-bottom: 5px;
+    color: #ff6b00;
+    font-size: 14px;
+}
+
+/* TEXT OUTPUT */
+.result p {
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+/* LISTS */
+ul {
+    padding-left: 18px;
+    font-size: 12px;
+}
+
+ul li {
+    margin-bottom: 4px;
+}
